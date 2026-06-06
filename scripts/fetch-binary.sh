@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/sh
+# POSIX sh (no bashisms) — invoked by `make`/lazy.nvim build, which may run /bin/sh.
+set -eu
 
 REPO="sstoehrm/conops"
 case "$(uname -s)-$(uname -m)" in
@@ -11,7 +12,7 @@ case "$(uname -s)-$(uname -m)" in
 		;;
 esac
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+DIR="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
 mkdir -p "$DIR/bin"
 url="https://github.com/$REPO/releases/latest/download/$asset"
 

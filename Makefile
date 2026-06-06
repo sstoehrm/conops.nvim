@@ -10,7 +10,7 @@ $(PARSER): src/parser.c
 	$(CC) -o $(PARSER) -Isrc -shared -fPIC -O2 src/parser.c
 
 binary:
-	@./scripts/fetch-binary.sh
+	@sh scripts/fetch-binary.sh
 
 test:
 	@./tests/run.sh
